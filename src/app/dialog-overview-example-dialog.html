@@ -1,0 +1,16 @@
+<div class="modelDesign">
+<h1 mat-dialog-title>Employee Details CSV</h1>
+<span> select file :
+<input class="form-control" accept=".csv" id="csv" type="file" (change)="onFileSelect($event.target)" name="myfile">
+</span>
+  <div style="background:#f5adc1">
+    <h4>Note:</h4>
+    <p>1.File format should be csv </p>
+    <p>2.File must be less than 10 Mb in size </p>
+  </div>
+
+<div mat-dialog-actions>
+  <button mat-flat-button color="gray"  (click)="onNoClick()">Close</button>
+  <button mat-flat-button color="primary" (click)="uploadFileData()">upload</button>
+</div>
+</div>
