@@ -55,8 +55,8 @@ export class DialogOverviewExampleDialog {
     this.dialogRef.close();
   }
 
-  onFileLoad(fileLoadedEvent) {
-    console.log("fileLoadedEvent==", fileLoadedEvent);
+  onFileLoad = (fileLoadedEvent) => {
+
     const textFromFileLoaded = fileLoadedEvent.target.result;
     this.csvContent = textFromFileLoaded;
 
@@ -90,10 +90,12 @@ export class DialogOverviewExampleDialog {
         flag = true;
       }
     }
-    this.contacts = objarray;
+
+    this.contacts = [...objarray];
     this.properties = [];
 
     this.properties = prop;
+
     this.flag = true;
     // console.log(this.csvContent);
   }
@@ -102,6 +104,7 @@ export class DialogOverviewExampleDialog {
 
 
   onFileSelect(input: HTMLInputElement) {
+    console.log("dsvfsg")
 
     const files = input.files;
     var fileTypes = ['csv'];  //acceptable file types
@@ -119,23 +122,23 @@ export class DialogOverviewExampleDialog {
         const fileReader = new FileReader();
         fileReader.onload = this.onFileLoad;
         fileReader.readAsText(fileToRead, "UTF-8");
+
       }else{
-        /*
-                this.toastr.error("Invalid File Type", 'Failed');
-        */
+        this.toastr.error('Invalid File');
       }
     }
   }
 
   uploadFileData() {
-    if(this.contacts){
+    if(this.contacts && this.contacts.length){
       this.appService.uploadData(this.contacts).subscribe((response) => {
+        this.dialogRef.close();
         if(response){
           this.toastr.success('File has been uploaded sucessfully');
         }
       });
     }else{
-      this.toastr.success('Please select file');
+      this.toastr.error('Please select file');
     }
 
   }
