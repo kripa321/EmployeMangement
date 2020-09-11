@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 
 import { AppRoutingModule } from './app-routing.module';
-import {AppComponent, DialogOverviewExampleDialog} from './app.component';
+import {AppComponent} from './app.component';
 import {CommonModule} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
 import {InterceptorService} from "./interceptor/interceptor.service";
@@ -19,7 +19,6 @@ import {ToastrModule} from "ngx-toastr";
 @NgModule({
   declarations: [
     AppComponent,
-    DialogOverviewExampleDialog
   ],
   imports: [
     BrowserModule,
@@ -36,7 +35,7 @@ import {ToastrModule} from "ngx-toastr";
     ToastrModule.forRoot(),
   ],
   providers: [InterceptorService],
-  entryComponents: [ DialogOverviewExampleDialog],
+  entryComponents: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

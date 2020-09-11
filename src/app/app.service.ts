@@ -11,22 +11,8 @@ export class AppService {
 
   constructor(public http: InterceptorService ) {
   }
-
-
-  getEmployeesDetails(): Observable<any> {
-    return this.http.get("http://demo8739287.mockable.io/dealshare/get-employee-details/1")
-      .pipe(
-        map(response => {
-          return response;
-        }),
-        catchError((err) => {
-          return observableOf(err);
-        })
-      );
-  }
-
-  uploadData(data): Observable<any> {
-    return this.http.post( "http://demo8739287.mockable.io/dealshare/save-employee-detail", {data: data})
+  myTokenData(): Observable<any> {
+    return this.http.post( "https://testapi.dnvgl.com/dcm_uat/v1/auth", {username:"z_auditor_app", password:"DCM-4-uat"})
       .pipe(
         map(response => {
           return response;

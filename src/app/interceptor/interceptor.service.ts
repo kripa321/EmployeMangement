@@ -30,7 +30,13 @@ export class InterceptorService {
    * @returns {Observable<Response>}
    */
   post(url, data) {
-    return this.http.post(url, data);
+    let  body = 'username=z_auditor_app&password=DCM-4-uat';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/x-www-form-urlencoded"
+      })
+    };
+    return this.http.post(url,body,httpOptions);
   }
 
 
